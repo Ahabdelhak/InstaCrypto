@@ -1,18 +1,20 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdk 32
     configurations.all {
         resolutionStrategy {
             force 'androidx.appcompat:appcompat:1.3.1'
+            force 'androidx.core:core-ktx:1.6.0'
         }
+
     }
+    compileSdk 32
     defaultConfig {
         minSdk 21
         targetSdk 32
@@ -36,16 +38,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-        useIR = true
-    }
     buildFeatures {
         compose true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.5.21'
+        kotlinCompilerVersion '1.6.21'
+
     }
     packagingOptions {
         resources {
@@ -55,6 +54,13 @@ android {
 }
 
 dependencies {
+
+    implementation project(':common')
+    implementation project(':domain')
+    implementation project(':entity')
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
@@ -69,4 +75,31 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+
+    // Material
+    api "com.google.android.material:material:$material"
+
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navComponentVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navComponentVersion"
+
+    // Core
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "androidx.core:core-ktx:$ktx"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+
+    // JetPack
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_livedata_ktx"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime"
+
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+
+    // Hilt dependencies
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 }
