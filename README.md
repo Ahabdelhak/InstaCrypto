@@ -5,7 +5,6 @@
 :point_right: What's InstaCrypto App Achieve ? :
 -----------------
 - Android Architecture Components.
-- Applying Jetpack compose ui.
 - Separation of concerns.
 - Test-ability.
 - Loose Coupling.
