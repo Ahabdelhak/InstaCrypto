@@ -1,6 +1,8 @@
 # InstaCrypto
 <img src="https://i.imgur.com/M5Gkifx.png" width="80">
-🎯 InstaCrypto consider a base project with Kotlin, MVVM applying clean architecture, alot of modern android stack.
+🎯 InstaCrypto consider a base project with Kotlin, MVVM applying clean architecture, alot of modern android stack. the aim of this project is to showcase the latest trends in android development by utilizing the best practices, libraries, and tools to develop a fully-fledged android application.
+
+
 
 :point_right: What's InstaCrypto App Achieve ? :
 -----------------
@@ -16,6 +18,7 @@
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) and [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html#asynchronous-flow) - Official Kotlin's tooling for performing asynchronous work.
 - [MVVM Architecture](https://developer.android.com/jetpack/guide) - Official recommended architecture for building robust, production-quality apps.
+- [Navigation component](https://developer.android.com/guide/navigation?gclid=CjwKCAjwpqCZBhAbEiwAa7pXeZjk0QE0wCj3xe9GKngJ9UurROkHznEj2I_mT6hT1dmTUm95WmVONBoCeQ8QAvD_BwE&gclsrc=aw.ds) - navigation graph for navigating and replacing screens/fragments
 - [Android Jetpack](https://developer.android.com/jetpack) - Jetpack is a suite of libraries to help developers build state-of-the-art applications.
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - The ViewModel is designed to store and manage UI-related data in a lifecycle conscious way.
 - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#stateflow) - StateFlow is a state-holder observable flow that emits the current and new state updates to its collectors.
@@ -24,7 +27,6 @@
 - [OkHttp](https://github.com/square/okhttp) - An HTTP client for making network calls.
 - [Retrofit](https://github.com/square/retrofit) - A library for building REST API clients.
 - [KotlinX Serialization](https://github.com/Kotlin/kotlinx.serialization) - A multiplatform Kotlin serialization library.
-- [Coil](https://github.com/coil-kt/coil) - An image loading library.
 - [Detekt](https://github.com/detekt/detekt) - A static code analysis library for Kotlin.
 - [Ktlint](https://github.com/pinterest/ktlint) - A library for formatting Kotlin code according to official guidelines.
 - [Testing](https://developer.android.com/training/testing) - The app is currently covered with unit tests and instrumentation tests.
