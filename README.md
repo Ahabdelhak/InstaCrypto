@@ -11,6 +11,7 @@
 - Test-ability.
 - Loose Coupling.
 - Applying SOLID principles.
+- Secure app from reverse engineering and protection against security threats.
 - Using better dependency management Using buildSrc + Kotlin DSL.
 
 :point_right: Tech Stack :
@@ -53,9 +54,12 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 - [ ] Apply CI|CD and automate some tasks using github actions.
 - [ ] Use git hooks to automate code checking and styling before any new commit.
 - [ ] Handle Different Build Variants.
-- [ ] Introduce mapper pattern to isolate the logic for making it easier to test and reuse the conversion logic in other classes if necessary.
+- [ ] Introduce mapper pattern to isolate the logic and making it easier to test and reuse the conversion logic in other classes if necessary.
 - [ ] Use JetPack compose for UI .
+- [ ] Use Data Store as a local DB for Favourite feature.
 - [ ] Use Ktor as network client instead of Retrofit & OKHTTP.
 - [ ] Use EncryptedSharedPreferences for securing user data.
-- [ ] Use Data Store as a local DB for Favourite feature.
+- [ ] Secure app from reverse engineering.
+- [ ] Apply SafetyNet for protection against security threats.
+- [ ] Apply ssl certificate concept.
 - [ ] Explore full MVI implementation.
