@@ -45,13 +45,17 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 
 :point_right: TO DO:
 -----------
-- [X] Use UseCases.
+- [X] Apply UseCases.
+- [ ] Use Coil for loading images.
 - [ ] Apply buildSrc + Kotlin DSL for better dependency management.
 - [ ] Add some unit tests.
 - [ ] Apply ktlint for checking code style.
+- [ ] Apply CI|CD and automate some tasks using github actions.
 - [ ] Use git hooks to automate code checking and styling before any new commit.
 - [ ] Handle Different Build Variants.
+- [ ] Introduce mapper pattern to isolate the logic for making it easier to test and reuse the conversion logic in other classes if necessary.
 - [ ] Use JetPack compose for UI .
 - [ ] Use Ktor as network client instead of Retrofit & OKHTTP.
+- [ ] Use EncryptedSharedPreferences for securing user data.
 - [ ] Use Data Store as a local DB for Favourite feature.
 - [ ] Explore full MVI implementation.
