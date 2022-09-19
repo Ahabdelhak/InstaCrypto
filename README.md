@@ -37,6 +37,21 @@
   - [Turbine](https://github.com/cashapp/turbine) - A testing library for Kotlin Flows.
   - [Dagger Hilt Test](https://developer.android.com/training/dependency-injection/hilt-testing) - A testing library for modifying the Dagger bindings in instrumented tests.
 - [Gradle's Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - Gradle’s Kotlin DSL is an alternative syntax to the Groovy DSL with an enhanced editing experience.
-- [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources) - A special module within the project to manage dependencies and whatnot.
+- [buildSrc](https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources) - A special module within the project to manage dependencies.
 
 For more information about used dependencies, see [this](/buildSrc/src/main/java/Dependencies.kt) file.
+
+
+
+:point_right: TO DO:
+-----------
+- [X] Use UseCases.
+- [ ] Apply buildSrc + Kotlin DSL for better dependency management.
+- [ ] Add some unit tests.
+- [ ] Apply ktlint for checking code style.
+- [ ] Use git hooks to automate code checking and styling before any new commit.
+- [ ] Handle Different Build Variants.
+- [ ] Use JetPack compose for UI .
+- [ ] Use Ktor as network client instead of Retrofit & OKHTTP.
+- [ ] Use Data Store as a local DB for Favourite feature.
+- [ ] Explore full MVI implementation.
