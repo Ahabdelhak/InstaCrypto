@@ -62,9 +62,8 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 - [ ] Introduce mapper pattern to isolate the logic and making it easier to test and reuse the conversion logic in other classes if necessary.
 - [ ] Use JetPack compose for UI .
 - [ ] Use Data Store as a local DB for Favourite feature.
-- [ ] Use Ktor as network client instead of Retrofit & OKHTTP.
 - [ ] Use EncryptedSharedPreferences for securing user data.
 - [ ] Secure app from reverse engineering.
 - [ ] Apply SafetyNet for protection against security threats.
 - [ ] Apply ssl certificate concept.
-- [ ] Explore full MVI implementation.
+- [ ] Use Ktor as network client instead of Retrofit & OKHTTP.
