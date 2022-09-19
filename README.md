@@ -2,6 +2,11 @@
 <img src="https://i.imgur.com/M5Gkifx.png" width="80">
 🎯 InstaCrypto consider a base project with Kotlin, MVVM applying clean architecture, alot of modern android stack. the aim of this project is to showcase the latest trends in android development by utilizing the best practices, libraries, and tools to develop a fully-fledged android application.
 
+:point_right: Clean Architecture:
+-----------------
+<div align="center">
+<img src="https://user-images.githubusercontent.com/20733292/191065631-db93241e-db85-4b52-a247-44abd7825be8.png">
+</div>
 
 
 :point_right: What's InstaCrypto App Achieve ? :
