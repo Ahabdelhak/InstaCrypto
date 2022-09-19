@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/feature/src/main/java/com/example/feature/compose/

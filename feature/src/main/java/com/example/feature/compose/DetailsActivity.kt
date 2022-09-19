@@ -1,4 +1,4 @@
-package com.example.feature
+package com.example.feature.compose
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.feature.data.model.Crypto
-import com.example.feature.ui.theme.InstaCryptoTheme
+import com.example.feature.compose.theme.InstaCryptoTheme
 
 class DetailsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

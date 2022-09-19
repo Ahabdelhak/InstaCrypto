@@ -1,4 +1,4 @@
-package com.example.feature
+package com.example.feature.ui.coinHome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.feature.data.DataProvider
 import com.example.feature.data.model.Crypto
-import com.example.feature.ui.theme.graySurface
+import com.example.feature.compose.theme.graySurface
 
 @Composable
 fun CryptoListItem(crypto: Crypto, navigateToDetails: (Crypto) -> Unit,) {

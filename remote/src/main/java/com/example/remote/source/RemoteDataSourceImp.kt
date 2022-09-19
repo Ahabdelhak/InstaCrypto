@@ -17,7 +17,7 @@ class RemoteDataSourceImp @Inject constructor(
         val response = apiService.coinList()
         if (response.code() != 200) throw Exception(response.message())
         val networkData = response.body()
-        if (networkData?.error == 404) throw Exception("Error")
+        //if (networkData?.error == 404) throw Exception("Error")
         return networkData!!
     }
 
@@ -25,7 +25,7 @@ class RemoteDataSourceImp @Inject constructor(
         val response = apiService.coinDetailsById(id)
         if (response.code() != 200) throw Exception(getErrorMessage(response.errorBody()!!.string()))
         val networkData = response.body()
-        if (networkData?.errorCode == 404) throw Exception("Error")
+        //if (networkData?.errorCode == 404) throw Exception("Error")
         return networkData!!
     }
 

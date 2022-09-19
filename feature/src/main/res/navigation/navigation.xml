@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/coinsResultFragment">
+
+    <fragment
+        android:id="@+id/coinsResultFragment"
+        android:name="com.example.feature.ui.coinHome.ui.CoinResultFragment"
+        android:label="fragment_coins_result"
+        tools:layout="@layout/fragment_coin_result">
+
+        <action
+            android:id="@+id/action_coinResultFragment_to_coinDetailsFragment"
+            app:destination="@id/coinDetailsFragment" />
+
+        <argument
+            android:name="query"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/coinDetailsFragment"
+        android:name="com.example.feature.ui.coinDetails.ui.CoinDetailsFragment"
+        android:label="fragment_coin_detail"
+        tools:layout="@layout/fragment_coin_details">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+
+
+</navigation>

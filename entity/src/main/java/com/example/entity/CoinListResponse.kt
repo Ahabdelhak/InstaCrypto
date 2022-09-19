@@ -1,7 +1,6 @@
 package com.example.entity
 
+import java.util.*
 
-data class CoinListResponse(
-    var coins: List<Coin>,
-    val error: Int
-)
+
+class CoinListResponse : ArrayList<Coin>()
