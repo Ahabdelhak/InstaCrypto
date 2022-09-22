@@ -60,6 +60,7 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 - [ ] Apply CI|CD and automate some tasks using github actions.
 - [ ] Use git hooks to automate code checking and styling before any new commit.
 - [ ] Handle Different Build Variants.
+- [ ] Add pagination for recyclerview using Paging 3 lib. 
 - [ ] Introduce mapper pattern to isolate the logic and making it easier to test and reuse the conversion logic in other classes if necessary.
 - [ ] Use JetPack compose for UI .
 - [ ] Use Data Store as a local DB for Favourite feature.
