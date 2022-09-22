@@ -33,6 +33,7 @@
 - [OkHttp](https://github.com/square/okhttp) - An HTTP client for making network calls.
 - [Retrofit](https://github.com/square/retrofit) - A library for building REST API clients.
 - [KotlinX Serialization](https://github.com/Kotlin/kotlinx.serialization) - A multiplatform Kotlin serialization library.
+- [Coil](https://github.com/coil-kt/coil) - An image loading library.
 - [Detekt](https://github.com/detekt/detekt) - A static code analysis library for Kotlin.
 - [Ktlint](https://github.com/pinterest/ktlint) - A library for formatting Kotlin code according to official guidelines.
 - [Testing](https://developer.android.com/training/testing) - The app is currently covered with unit tests and instrumentation tests.
