@@ -17,6 +17,7 @@ import com.example.entity.CoinDetailsResponse
 import com.example.feature.R
 import com.example.feature.core.BaseFragment
 import com.example.feature.databinding.FragmentCoinDetailsBinding
+import com.example.feature.extension.loadImagesWithCoil
 import com.example.feature.extension.loadImagesWithGlide
 import com.example.feature.ui.coinDetails.contract.CoinDetailsContract
 import com.example.feature.ui.coinDetails.vm.CoinDetailsViewModel
@@ -85,7 +86,7 @@ class CoinDetailsFragment : BaseFragment<FragmentCoinDetailsBinding>() {
         data.market_data.price_change_percentage_24h?.let { it -> setIncreaseDecrease(binding.imgIncreasDec, it) }
         binding.tvPriceChangePercentageIn24h.text = data.market_data.price_change_percentage_24h.toString()
         binding.tvDescription.text = data.description.en
-        binding.imgCoin.loadImagesWithGlide(data.image.large)
+        binding.imgCoin.loadImagesWithCoil(data.image.large)
     }
 
     private fun setIncreaseDecrease(imageView: ImageView, price: Double) {

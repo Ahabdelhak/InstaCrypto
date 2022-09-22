@@ -5,6 +5,7 @@ import com.example.entity.Coin
 import com.example.feature.R
 import com.example.feature.core.BaseViewHolder
 import com.example.feature.databinding.ItemCoinBinding
+import com.example.feature.extension.loadImagesWithCoil
 import com.example.feature.extension.loadImagesWithGlide
 
 /**
@@ -30,7 +31,7 @@ class CoinViewHolder constructor(
             binding.tvName.text = it.name
             binding.tvCurrentPrice.text = "$" + it.current_price.toString()
             binding.tvPercentagePercentage.text = it.price_change_percentage_24h
-            it.image?.let { it1 -> binding.imageView.loadImagesWithGlide(it1) }
+            it.image?.let { it1 -> binding.imageView.loadImagesWithCoil(it1) }
             it.price_change_percentage_24h?.let { it1 -> setIncreaseDecrease(binding.imgIncreasDec, it1.toDouble()) }
 
             binding.executePendingBindings()

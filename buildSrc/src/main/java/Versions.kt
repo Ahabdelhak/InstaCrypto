@@ -29,6 +29,7 @@ object Versions {
     const val multidex = "1.0.3"
     const val androidUtil = "1.29.0"
     const val navComponentVersion = "2.3.5"
+    const val coil = "2.2.1"
     const val compose_version = "1.2.0-rc02"
     const val materialDialogVersion = "3.3.0"
     const val javaxInjectVersion = "1"

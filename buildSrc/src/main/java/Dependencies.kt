@@ -22,6 +22,7 @@ object Deps {
     val coroutinesCore by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}" }
     val coroutinesAndroid by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}" }
 
+    val coil by lazy { "io.coil-kt:coil:${Versions.coil}" }
     val glide by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
     val glideCompiler by lazy { "com.github.bumptech.glide:compiler:${Versions.glide}" }
     val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}" }

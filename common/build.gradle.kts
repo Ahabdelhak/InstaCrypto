@@ -37,9 +37,13 @@ android {
 }
 
 dependencies {
+    implementation(Deps.appCompat)
+    implementation(Deps.ktx)
     api(Deps.coroutinesCore)
     api(Deps.coroutinesAndroid)
     api(Deps.glide)
     annotationProcessor(Deps.glideCompiler)
+
+    api(Deps.coil)
 
 }
