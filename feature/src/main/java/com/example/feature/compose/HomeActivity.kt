@@ -1,3 +1,4 @@
+/*
 package com.example.feature.compose
 
 import android.os.Bundle
@@ -46,9 +47,11 @@ fun MyApp(navigateToDetails: (Crypto) -> Unit) {
     )
 }
 
+*/
 /**
  * Initialize Observers
- */
+ *//*
+
 @Composable
 private fun initObservers(viewModel:CoinListViewModel) {
     LaunchedEffect(Unit) {
@@ -62,14 +65,17 @@ private fun initObservers(viewModel:CoinListViewModel) {
                 }
                 is CoinListContract.CoinListState.Success -> {
                     val data = state.result
-                   /* adapter.appendList(data.competitions)
-                    binding.loadingPb.isVisible = false*/
+                   */
+/* adapter.appendList(data.competitions)
+                    binding.loadingPb.isVisible = false*//*
+
                 }
             }
         }
     }
 
-    /*LaunchedEffect(Unit) {
+    */
+/*LaunchedEffect(Unit) {
         viewModel.effect.collect {
             when (it) {
                 is CompetitionListContract.Effect.ShowError -> {
@@ -86,5 +92,7 @@ private fun initObservers(viewModel:CoinListViewModel) {
                 }
             }
         }
-    }*/
+    }*//*
+
 }
+*/

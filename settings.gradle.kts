@@ -7,10 +7,10 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "InstaCrypto"
-include ':app'
-include ':feature'
-include ':common'
-include ':data'
-include ':entity'
-include ':remote'
-include ':domain'
+include(":app")
+include(":feature")
+include(":common")
+include(":data")
+include(":entity")
+include(":remote")
+include(":domain")

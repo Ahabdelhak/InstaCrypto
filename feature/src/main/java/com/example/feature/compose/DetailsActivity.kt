@@ -1,3 +1,4 @@
+/*
 package com.example.feature.compose
 
 import android.content.Context
@@ -46,4 +47,4 @@ fun DefaultPreview() {
     InstaCryptoTheme {
         Greeting("Android")
     }
-}
+}*/

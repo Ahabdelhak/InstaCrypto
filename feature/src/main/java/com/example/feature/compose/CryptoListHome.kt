@@ -1,3 +1,4 @@
+/*
 package com.example.feature.compose
 
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,4 +21,4 @@ fun CryptoHomeContent(navigateToDetails: (Crypto) -> Unit, cryptoList:List<Crypt
             }
         )
     }
-}
+}*/
