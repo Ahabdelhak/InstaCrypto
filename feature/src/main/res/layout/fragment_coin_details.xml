@@ -170,7 +170,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/common_full_open_on_phone" />
+                />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView12"

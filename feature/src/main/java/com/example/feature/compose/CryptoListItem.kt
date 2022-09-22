@@ -1,3 +1,4 @@
+/*
 package com.example.feature.ui.coinHome
 
 import androidx.compose.foundation.Image
@@ -64,3 +65,4 @@ fun PreviewCryptoItem() {
     val crypto = DataProvider.crypto
     CryptoListItem(crypto = crypto, navigateToDetails = {})
 }
+*/
