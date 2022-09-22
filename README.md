@@ -53,7 +53,7 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 -----------
 - [X] Apply UseCases.
 - [X] Apply buildSrc + Kotlin DSL for better dependency management.
-- [ ] Use Coil for loading images.
+- [X] Use Coil for loading images.
 - [ ] Add some unit tests.
 - [ ] Apply ktlint for checking code style.
 - [ ] Apply CI|CD and automate some tasks using github actions.
