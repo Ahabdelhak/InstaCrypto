@@ -5,7 +5,7 @@
 :point_right: Clean Architecture:
 -----------------
 <div align="center">
-<img src="https://user-images.githubusercontent.com/20733292/191065631-db93241e-db85-4b52-a247-44abd7825be8.png">
+<img src="https://user-images.githubusercontent.com/20733292/192646997-1c95d99f-a7c4-43ec-9af6-e5b27fb52062.png">
 </div>
 
 
