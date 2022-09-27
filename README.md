@@ -1,6 +1,6 @@
 # InstaCrypto
 <img src="https://i.imgur.com/M5Gkifx.png" width="80">
-🎯 InstaCrypto consider a base project with Kotlin, MVVM applying clean architecture, alot of modern android stack. the aim of this project is to showcase the latest trends in android development by utilizing the best practices, libraries, and tools to develop a fully-fledged android application.
+🎯 InstaCrypto consider a base project with Kotlin, MVVM applying clean architecture and several modern android stack. the aim of this project is to showcase the latest trends in android development by utilizing the best practices, libraries, and tools to develop a fully-fledged android application.
 
 :point_right: Clean Architecture:
 -----------------
@@ -28,11 +28,11 @@
 - [Android Jetpack](https://developer.android.com/jetpack) - Jetpack is a suite of libraries to help developers build state-of-the-art applications.
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - The ViewModel is designed to store and manage UI-related data in a lifecycle conscious way.
 - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#stateflow) - StateFlow is a state-holder observable flow that emits the current and new state updates to its collectors.
-- [DataStore](https://developer.android.com/topic/libraries/architecture/datastore) - DataStore is a data storage solution that stores key-value pairs or typed objects with [protocol buffers](https://developers.google.com/protocol-buffers).
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android.
 - [OkHttp](https://github.com/square/okhttp) - An HTTP client for making network calls.
 - [Retrofit](https://github.com/square/retrofit) - A library for building REST API clients.
 - [KotlinX Serialization](https://github.com/Kotlin/kotlinx.serialization) - A multiplatform Kotlin serialization library.
+- [Coil](https://github.com/coil-kt/coil) - An image loading library.
 - [Detekt](https://github.com/detekt/detekt) - A static code analysis library for Kotlin.
 - [Ktlint](https://github.com/pinterest/ktlint) - A library for formatting Kotlin code according to official guidelines.
 - [Testing](https://developer.android.com/training/testing) - The app is currently covered with unit tests and instrumentation tests.
@@ -53,15 +53,17 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 -----------
 - [X] Apply UseCases.
 - [X] Apply buildSrc + Kotlin DSL for better dependency management.
-- [ ] Use Coil for loading images.
+- [X] Use Coil for loading images.
 - [ ] Add some unit tests.
+- [ ] Apply MAD score Analysis.
 - [ ] Apply ktlint for checking code style.
 - [ ] Apply CI|CD and automate some tasks using github actions.
 - [ ] Use git hooks to automate code checking and styling before any new commit.
 - [ ] Handle Different Build Variants.
+- [ ] Add pagination for recyclerview using Paging 3 lib. 
 - [ ] Introduce mapper pattern to isolate the logic and making it easier to test and reuse the conversion logic in other classes if necessary.
 - [ ] Use JetPack compose for UI .
-- [ ] Use Data Store as a local DB for Favourite feature.
+- [ ] Use Room as a local DB for caching data.
 - [ ] Use EncryptedSharedPreferences for securing user data.
 - [ ] Secure app from reverse engineering.
 - [ ] Apply SafetyNet for protection against security threats.
