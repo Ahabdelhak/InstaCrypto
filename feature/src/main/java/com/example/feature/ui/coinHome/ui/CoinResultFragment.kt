@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +28,14 @@ class CoinResultFragment : BaseFragment<FragmentCoinResultBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        onBackPressed()
+    }
+
+    private fun onBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            //Do something
+            activity?.finish()
+        }
     }
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCoinResultBinding

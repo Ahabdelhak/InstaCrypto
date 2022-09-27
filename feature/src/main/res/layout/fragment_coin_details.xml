@@ -6,195 +6,205 @@
 
     </data>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nsv_description"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent"
+        >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:rotationX="180"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bg_top_bar" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textview12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coin Details"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsv_description"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            android:paddingBottom="20dp"
+            >
 
-            <ImageView
-                android:id="@+id/img_coin"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="40dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvCoinName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                app:layout_constraintVertical_chainStyle="packed"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvCoinName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/img_coin"
-                app:layout_constraintStart_toStartOf="@+id/img_coin"
-                app:layout_constraintTop_toBottomOf="@+id/img_coin"
-                tools:text="Bitcoin" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_hashing_algorithm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_current_price2"
-                app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_hashing_algorithm2"
-                tools:text="hashingAlgorithm" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_hashing_algorithm2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="30dp"
-                android:text="hashing algorithm"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_hashing_algorithm"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCoinName" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_current_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_price_change_percentage_in_24h2"
-                app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_current_price2"
-                tools:text="currentPrice" />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_current_price2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="Current Price"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_current_price"
-                app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_hashing_algorithm" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_price_change_percentage_in_24h"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_description2"
-                app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_price_change_percentage_in_24h2"
-                tools:text="priceChangePercentage24h" />
-
-            <ImageView
-                android:id="@+id/imgIncreasDec"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginStart="5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_price_change_percentage_in_24h"
-                app:layout_constraintStart_toEndOf="@+id/tv_price_change_percentage_in_24h"
-                app:layout_constraintTop_toTopOf="@+id/tv_price_change_percentage_in_24h"
-                tools:src="@drawable/ic_increase" />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_price_change_percentage_in_24h2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="Price Change Percentage in 24h"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_price_change_percentage_in_24h"
-                app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_current_price" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_description"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="18dp"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_description2"
-                tools:text="description" />
+                android:paddingBottom="20dp"
+                >
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_description2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="Description"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_description"
-                app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_price_change_percentage_in_24h" />
+                <ImageView
+                    android:id="@+id/img_coin"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="40dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvCoinName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvCoinName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/img_coin"
+                    app:layout_constraintStart_toStartOf="@+id/img_coin"
+                    app:layout_constraintTop_toBottomOf="@+id/img_coin"
+                    tools:text="Bitcoin" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_hashing_algorithm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_current_price2"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hashing_algorithm2"
+                    tools:text="hashingAlgorithm" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_hashing_algorithm2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="30dp"
+                    android:text="hashing algorithm"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_hashing_algorithm"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCoinName" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_current_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_price_change_percentage_in_24h2"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_current_price2"
+                    tools:text="currentPrice" />
 
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_current_price2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Current Price"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_current_price"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hashing_algorithm" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:rotationX="180"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_price_change_percentage_in_24h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_description2"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_price_change_percentage_in_24h2"
+                    tools:text="priceChangePercentage24h" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Details"
-                android:textColor="@color/purple_500"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                app:layout_constraintStart_toStartOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/imgIncreasDec"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_price_change_percentage_in_24h"
+                    app:layout_constraintStart_toEndOf="@+id/tv_price_change_percentage_in_24h"
+                    app:layout_constraintTop_toTopOf="@+id/tv_price_change_percentage_in_24h"
+                    tools:src="@drawable/ic_increase" />
 
 
-            <ProgressBar
-                android:id="@+id/loading_pb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:translationZ="50dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_price_change_percentage_in_24h2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Price Change Percentage in 24h"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_price_change_percentage_in_24h"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_current_price" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="18dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_description2"
+                    tools:text="description" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_description2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Description"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_description"
+                    app:layout_constraintStart_toStartOf="@+id/tv_hashing_algorithm2"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_price_change_percentage_in_24h" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/loading_pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationZ="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
