@@ -1,4 +1,4 @@
-# InstaCrypto
+# 🚀 InstaCrypto
 <img src="https://user-images.githubusercontent.com/20733292/192638539-e312e79c-4bd6-46ba-992f-1acfe7347b84.png" width="100">
 🎯 InstaCrypto consider a base project with Kotlin, MVVM applying clean architecture and several modern android stack. the aim of this project is to showcase the latest trends in android development by utilizing the best practices, libraries, and tools to develop a fully-fledged android application.
 
@@ -9,15 +9,15 @@
 </div>
 
 
-:point_right: What's InstaCrypto App Achieve ? :
+:point_right: The purpose of this repository is to demonstrate :
 -----------------
 - Android Architecture Components.
 - Separation of concerns.
 - Test-ability.
 - Loose Coupling.
 - Applying SOLID principles.
-- Secure app from reverse engineering and protection against security threats.
 - Using better dependency management Using buildSrc + Kotlin DSL.
+- Secure app from reverse engineering and protection against security threats.
 
 :point_right: Tech Stack :
 -----------------
@@ -54,7 +54,7 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 - [X] Apply UseCases.
 - [X] Apply buildSrc + Kotlin DSL for better dependency management.
 - [X] Use Coil for loading images.
-- [ ] Add some unit tests.
+- [X] Add some unit tests.
 - [ ] Apply MAD score Analysis.
 - [ ] Apply ktlint for checking code style.
 - [ ] Apply CI|CD and automate some tasks using github actions.
