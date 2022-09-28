@@ -12,13 +12,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
-import com.example.entity.Coin
 import com.example.entity.CoinDetailsResponse
 import com.example.feature.R
 import com.example.feature.core.BaseFragment
 import com.example.feature.databinding.FragmentCoinDetailsBinding
 import com.example.feature.extension.loadImagesWithCoil
-import com.example.feature.extension.loadImagesWithGlide
 import com.example.feature.ui.coinDetails.contract.CoinDetailsContract
 import com.example.feature.ui.coinDetails.vm.CoinDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint

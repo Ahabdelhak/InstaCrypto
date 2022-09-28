@@ -1,5 +1,9 @@
 package com.example.entity
 
+import com.example.entity.Description
+import com.example.entity.Image
+import com.example.entity.MarketData
+
 data class CoinDetailsResponse(
     val description: Description,
     val hashing_algorithm: String,
