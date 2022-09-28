@@ -1,0 +1,87 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  private_lane :setup_variables do
+    PACKAGE_NAME = ENV["PACKAGE_NAME"]
+    BUILD_NUMBER_PATH = ENV["BUILD_NUMBER_PATH"]
+    KEYSTORE_PATH = ENV['KEYSTORE_PATH']
+    KEYSTORE_PASSWORD = ENV['KEYSTORE_PASSWORD']
+    KEYSTORE_ALIAS = ENV['KEYSTORE_ALIAS']
+    KEYSTORE_ALIAS_PASSWORD = ENV['KEYSTORE_ALIAS_PASSWORD']
+    JSON_KEY_PATH = ENV['JSON_KEY_PATH']
+  end
+
+  before_all do
+    setup_variables
+  end
+
+  lane :release do |options|
+    build_apk
+    upload_to_play_store(
+      release_status: "draft",
+      json_key: JSON_KEY_PATH
+      )
+  end
+
+  lane :build do |options|
+    update_build_number
+    build_apk
+  end
+
+  # Private Lanes
+  desc "Download dependencies"
+  private_lane :download_dependencies do
+    gradle(task: "androidDependencies")
+  end
+
+  desc "Build Signed APK"
+  private_lane :build_apk do |options|
+    download_dependencies
+    android_set_version_code(
+      version_code: fetch_build_number.to_i
+    )
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      flavor: "playstore",
+      print_command: true,
+      properties: {
+        "android.injected.signing.store.file" =>  KEYSTORE_PATH,
+        "android.injected.signing.store.password" =>  KEYSTORE_PASSWORD,
+        "android.injected.signing.key.alias" =>  KEYSTORE_ALIAS,
+        "android.injected.signing.key.password" =>  KEYSTORE_ALIAS_PASSWORD
+      }
+    )
+  end
+
+  private_lane :fetch_build_number do
+    sh(
+      command: "cat #{BUILD_NUMBER_PATH}"
+    )
+
+  end
+
+  private_lane :update_build_number do
+    buildNumber = fetch_build_number.to_i + 1
+    value = sh(command: "echo #{buildNumber} > #{BUILD_NUMBER_PATH}")
+  end
+
+  lane :generate_changelog_text do
+    "#{git_branch}\n#{changelog_from_git_commits( commits_count: "10")}"
+  end
+end
