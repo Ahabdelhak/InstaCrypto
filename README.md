@@ -2,6 +2,21 @@
 <img src="https://user-images.githubusercontent.com/20733292/192638539-e312e79c-4bd6-46ba-992f-1acfe7347b84.png" width="100">
 🎯 InstaCrypto consider a base project with Kotlin, MVVM applying clean architecture and several modern android stack. the aim of this project is to showcase the latest trends in android development by utilizing the best practices, libraries, and tools to develop a fully-fledged android application.
 
+
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
+<a name="platform">
+  <img src="https://img.shields.io/badge/Platform-Android-success?style=flat">
+</a>
+<a name="language">
+  <img src="https://img.shields.io/badge/Language-Kotlin---?style=flat">
+</a>
+<a name="open_source">
+  <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102?style=flat">
+</a>
+</p>
+
 :point_right: Clean Architecture:
 -----------------
 <div align="center">
