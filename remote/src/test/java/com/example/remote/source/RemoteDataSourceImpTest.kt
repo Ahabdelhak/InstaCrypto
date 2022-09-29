@@ -3,7 +3,7 @@ package com.example.remote.source
 import androidx.test.filters.SmallTest
 import com.example.data.repository.RemoteDataSource
 import com.example.remote.api.ApiService
-import com.example.remote.source.util.TestDataGenerator
+import com.example.data.util.TestDataGenerator
 import com.google.common.truth.Truth
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
