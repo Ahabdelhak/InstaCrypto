@@ -84,6 +84,10 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 - [ ] Apply ssl certificate concept.
 - [ ] Use Ktor as network client instead of Retrofit & OKHTTP.
 
+:point_right: Contribution:
+-----------
+See the [CONTRIBUTION.md](/CONTRIBUTION.md) file.
+
 # ⚠️ License
 ```xml
 Copyright 2022 AHMED ABDELHAK, All Rights Reserved.
