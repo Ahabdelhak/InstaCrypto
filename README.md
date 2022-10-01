@@ -69,9 +69,9 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 - [X] Apply buildSrc + Kotlin DSL for better dependency management.
 - [X] Use Coil for loading images.
 - [X] Add some unit tests.
+- [ ] Apply CI|CD and automate some tasks using github actions.
 - [ ] Apply MAD score Analysis.
 - [ ] Apply ktlint for checking code style.
-- [ ] Apply CI|CD and automate some tasks using github actions.
 - [ ] Use git hooks to automate code checking and styling before any new commit.
 - [ ] Handle Different Build Variants.
 - [ ] Add pagination for recyclerview using Paging 3 lib. 

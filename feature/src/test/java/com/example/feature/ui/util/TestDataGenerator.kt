@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package com.example.remote.source.util
+package com.example.feature.ui.util
 
 import com.example.entity.*
 
