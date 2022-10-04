@@ -76,7 +76,7 @@ For more information about used dependencies, see [this](/buildSrc/src/main/java
 - [ ] Handle Different Build Variants.
 - [ ] Add pagination for recyclerview using Paging 3 lib. 
 - [ ] Introduce mapper pattern to isolate the logic and making it easier to test and reuse the conversion logic in other classes if necessary.
-- [ ] Use JetPack compose for UI .
+- [ ] Migrate to Jetpack Compose for UI .
 - [ ] Use Room as a local DB for caching data.
 - [ ] Use EncryptedSharedPreferences for securing user data.
 - [ ] Secure app from reverse engineering.
