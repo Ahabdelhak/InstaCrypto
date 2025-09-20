@@ -25,7 +25,7 @@ import com.google.gson.Gson
 class RemoteDataSourceImp @Inject constructor(
     private val apiService: ApiService) : RemoteDataSource {
 
-
+    //coin list response
     override suspend fun getCoinList(): CoinListResponse {
         val response = apiService.coinList()
         if (response.code() != 200) throw Exception(response.message())
@@ -34,6 +34,7 @@ class RemoteDataSourceImp @Inject constructor(
         return networkData!!
     }
 
+    //get coin details response
     override suspend fun getCoinDetails(id:String): CoinDetailsResponse {
         val response = apiService.coinDetailsById(id)
         if (response.code() != 200) throw Exception(getErrorMessage(response.errorBody()!!.string()))
@@ -42,7 +43,6 @@ class RemoteDataSourceImp @Inject constructor(
         return networkData!!
     }
 
-    //get formated error message
     private fun getErrorMessage(errorBody: String): String? {
         val gson = Gson()
         val errorResponse: ErrorMessage = gson.fromJson(
