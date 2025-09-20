@@ -42,6 +42,7 @@ class RemoteDataSourceImp @Inject constructor(
         return networkData!!
     }
 
+    //get formated error message
     private fun getErrorMessage(errorBody: String): String? {
         val gson = Gson()
         val errorResponse: ErrorMessage = gson.fromJson(
