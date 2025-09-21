@@ -1,14 +1,16 @@
 /*
- * Copyright 2022 AHMED ABDELHAK. All rights reserved.
+ * Copyright 2022 AHMED ABDELHAK
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
+ * You may obtain a copy of the License at:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.example.feature.ui.coinHome.vm
@@ -27,67 +29,52 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val getCoinUseCase: CoinsListUseCase,
+    private val coinsListUseCase: CoinsListUseCase,
 ) : BaseViewModel<CoinListContract.Event, CoinListContract.State, CoinListContract.Effect>() {
-
 
     init {
         setEvent(CoinListContract.Event.GetCoinList)
     }
 
-    override fun createInitialState(): CoinListContract.State {
-        return CoinListContract.State(
-            coinListState = CoinListContract.CoinListState.Idle
-        )
-    }
+    override fun createInitialState(): CoinListContract.State =
+        CoinListContract.State(coinListState = CoinListContract.CoinListState.Idle)
 
     override fun handleEvent(event: CoinListContract.Event) {
         when (event) {
-            is CoinListContract.Event.GetCoinList -> {
-                getCoinList()
-            }
+            CoinListContract.Event.GetCoinList -> fetchCoinList()
             is CoinListContract.Event.OnCoinItemClicked -> {
-                val id = event.id
-                setEffect { CoinListContract.Effect.Navigate(id) }
+                setEffect { CoinListContract.Effect.Navigate(event.id) }
             }
         }
     }
 
     /**
-     * Fetch List
+     * Fetch coin list from use case and update UI state/effects accordingly.
      */
-    private fun getCoinList() {
+    private fun fetchCoinList() {
         viewModelScope.launch {
-            getCoinUseCase.execute(Any())
+            coinsListUseCase.execute(Unit)
                 .onStart { emit(Resource.Loading) }
-                .collect {
-
-                    when (it) {
-                        is Resource.Loading -> {
-                            // Set State
-                            setState { copy(coinListState = CoinListContract.CoinListState.Loading) }
+                .collect { resource ->
+                    when (resource) {
+                        is Resource.Loading -> setState {
+                            copy(coinListState = CoinListContract.CoinListState.Loading)
                         }
-                        is Resource.Empty -> {
-                            // Set State
-                            setState { copy(coinListState = CoinListContract.CoinListState.Idle) }
+                        is Resource.Empty -> setState {
+                            copy(coinListState = CoinListContract.CoinListState.Idle)
                         }
-                        is Resource.Success -> {
-                            // Set State
-                            setState {
-                                copy(
-                                    coinListState = CoinListContract.CoinListState.Success(
-                                        result = it.data
-                                    )
+                        is Resource.Success -> setState {
+                            copy(
+                                coinListState = CoinListContract.CoinListState.Success(
+                                    result = resource.data
                                 )
-                            }
+                            )
                         }
-                        is Resource.Error -> {
-                            // Set Effect
-                            setEffect { CoinListContract.Effect.ShowError(message = it.message) }
+                        is Resource.Error -> setEffect {
+                            CoinListContract.Effect.ShowError(message = resource.message)
                         }
                     }
                 }
         }
     }
-
 }
