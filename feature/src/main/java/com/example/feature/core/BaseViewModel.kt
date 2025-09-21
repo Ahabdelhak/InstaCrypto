@@ -1,14 +1,15 @@
 /*
- * Copyright 2022 AHMED ABDELHAK. All rights reserved.
+ * Copyright 2022 AHMED ABDELHAK
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.example.feature.core
@@ -20,69 +21,67 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 /**
- * Base class for [ViewModel] instances
+ * Base class for [ViewModel] instances using MVI pattern.
+ *
+ * @param Event Represents user-driven actions (UI events).
+ * @param State Represents the current UI state.
+ * @param Effect Represents one-time effects (navigation, toasts, etc.).
  */
 abstract class BaseViewModel<Event : UiEvent, State : UiState, Effect : UiEffect> : ViewModel() {
 
-    private val initialState : State by lazy { createInitialState() }
-    abstract fun createInitialState() : State
+    // --- State ---
+    private val initialState: State by lazy { createInitialState() }
+    protected abstract fun createInitialState(): State
 
-    val currentState: State
-        get() = uiState.value
+    private val _uiState = MutableStateFlow(initialState)
+    val uiState: StateFlow<State> = _uiState.asStateFlow()
 
-    private val _uiState : MutableStateFlow<State> = MutableStateFlow(initialState)
-    val uiState = _uiState.asStateFlow()
+    val currentState: State get() = _uiState.value
 
-    private val _event : MutableSharedFlow<Event> = MutableSharedFlow()
-    val event = _event.asSharedFlow()
+    // --- Events ---
+    private val _event = MutableSharedFlow<Event>()
+    private val event: SharedFlow<Event> = _event.asSharedFlow()
 
-    private val _effect : Channel<Effect> = Channel()
-    val effect = _effect.receiveAsFlow()
-
+    // --- Effects ---
+    private val _effect = Channel<Effect>(Channel.BUFFERED)
+    val effect: Flow<Effect> = _effect.receiveAsFlow()
 
     init {
-        subscribeEvents()
+        subscribeToEvents()
     }
 
     /**
-     * Start listening to Event
+     * Subscribes to [Event]s and forwards them to [handleEvent].
      */
-    private fun subscribeEvents() {
+    private fun subscribeToEvents() {
         viewModelScope.launch {
-            event.collect {
-                handleEvent(it)
-            }
+            event.collect(::handleEvent)
         }
     }
 
     /**
-     * Handle each event
+     * Handle each incoming [Event].
      */
-    abstract fun handleEvent(event : Event)
-
+    protected abstract fun handleEvent(event: Event)
 
     /**
-     * Set new Event
+     * Emit a new [Event].
      */
-    fun setEvent(event : Event) {
-        val newEvent = event
-        viewModelScope.launch { _event.emit(newEvent) }
-    }
-
-
-    /**
-     * Set new Ui State
-     */
-    protected fun setState(reduce: State.() -> State) {
-        val newState = currentState.reduce()
-        _uiState.value = newState
+    fun setEvent(event: Event) {
+        viewModelScope.launch { _event.emit(event) }
     }
 
     /**
-     * Set new Effect
+     * Update the current [State].
+     */
+    protected fun setState(reducer: State.() -> State) {
+        _uiState.value = currentState.reducer()
+    }
+
+    /**
+     * Emit a one-time [Effect].
      */
     protected fun setEffect(builder: () -> Effect) {
-        val effectValue = builder()
-        viewModelScope.launch { _effect.send(effectValue) }
+        viewModelScope.launch { _effect.send(builder()) }
     }
 }
