@@ -28,6 +28,7 @@ class CoinDetailsUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : BaseUseCase<CoinDetailsResponse, String>() {
 
+    // Build Coin Details
     override suspend fun buildRequest(params: String?): Flow<Resource<CoinDetailsResponse>> {
         return repository.getCoinDetails(id = params!!).flowOn(dispatcher)
     }
