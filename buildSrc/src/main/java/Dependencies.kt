@@ -51,6 +51,7 @@ object Deps {
     val lifecyclelivedata by lazy { "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_livedata_ktx}" }
     val lifecycleRuntime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_runtime}" }
     val fragmentKtx by lazy { "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}" }
+    val fragmentKtx by lazy { "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}" }
     val junit by lazy { "junit:junit:${Versions.jUnit}" }
 
 }
