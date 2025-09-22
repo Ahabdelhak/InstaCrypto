@@ -54,7 +54,7 @@ object Versions {
     const val testRunnerVersion = "1.3.0"
     const val mockkVersion = "1.11.0"
     const val mockkAndroidVersion = "1.11.0"
-    const val turbineVersion = "0.5.2"
+    const val turbineVersion = "0.5.3"
     const val fragmentTestingVersion = "1.3.2"
     const val baristaVersion = "3.9.0"
 }
