@@ -1,18 +1,4 @@
-/*
- * Copyright 2022 AHMED ABDELHAK. All rights reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.remote.di
-
 
 import com.example.data.BuildConfig
 import com.example.remote.api.ApiService
@@ -21,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -30,61 +17,70 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 /**
- * Module that holds Network related classes
+ * Module that provides secure network dependencies.
  */
-
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    private const val DEFAULT_TIMEOUT = 30L
+
     /**
-     * Provides [HttpLoggingInterceptor] instance
+     * Provides [HttpLoggingInterceptor] with restricted logging.
      */
     @Provides
-    fun provideLoggingInterceptor() : HttpLoggingInterceptor {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        if (BuildConfig.DEBUG)
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        else
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
-
-        return httpLoggingInterceptor
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
+            level = if (BuildConfig.DEBUG) {
+                // Avoid BODY in case of sensitive data (tokens, passwords, etc.)
+                HttpLoggingInterceptor.Level.BASIC
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
+        }
     }
 
     /**
-     * Provides [OkHttpClient] instance
+     * Provides [OkHttpClient] with security enhancements.
      */
     @Provides
-    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor) : OkHttpClient {
-        return OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .addInterceptor(httpLoggingInterceptor)
-            .retryOnConnectionFailure(true)
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        val builder = OkHttpClient.Builder()
+            .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .retryOnConnectionFailure(false) // disable aggressive retries
+
+        // ✅ Optional: Certificate Pinning (replace with real hash from API server)
+        val hostname = "api.coingecko.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=")
             .build()
+        builder.certificatePinner(certificatePinner)
+
+        return builder.build()
     }
 
     /**
-     * Provides [Retrofit] instance
+     * Provides [Retrofit] instance.
      */
     @Provides
-    fun provideRetrofitTest(okHttpClient: OkHttpClient) : Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
         return Retrofit.Builder()
-            .baseUrl("https://api.coingecko.com/api/v3/")
+            // ✅ Don’t hardcode, use BuildConfig or remote config
+            .baseUrl(BuildConfig.API_BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
     }
 
     /**
-     * Provides [ApiService] instance
+     * Provides [ApiService] instance.
      */
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
-    }
-
+    fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 }

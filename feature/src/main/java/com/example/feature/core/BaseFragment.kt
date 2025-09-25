@@ -1,14 +1,16 @@
 /*
- * Copyright 2022 AHMED ABDELHAK. All rights reserved.
+ * Copyright 2022 AHMED ABDELHAK
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, distributed under the License
+ * is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.example.feature.core
@@ -21,34 +23,40 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 /**
- * Base class for all [Fragment] instances
+ * Base class for all [Fragment]s that use [ViewBinding].
+ *
+ * @param VB The type of [ViewBinding] for this Fragment.
  */
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     private var _binding: VB? = null
-    abstract val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> VB
+    protected abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
 
-    protected val binding : VB
-        get() = requireNotNull(_binding)
+    // Expose only a non-nullable binding within the view lifecycle
+    protected val binding: VB
+        get() = checkNotNull(_binding) { "Binding is only valid between onCreateView and onDestroyView" }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = bindLayout.invoke(inflater, container, false)
-        return requireNotNull(_binding).root
+        _binding = bindingInflater(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        prepareView(savedInstanceState)
+        setupUI(savedInstanceState)
     }
 
-    abstract fun prepareView(savedInstanceState: Bundle?)
+    /**
+     * Called after the view is created. Override to set up UI, listeners, etc.
+     */
+    protected abstract fun setupUI(savedInstanceState: Bundle?)
 
     override fun onDestroyView() {
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 }
