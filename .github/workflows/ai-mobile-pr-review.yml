@@ -12,6 +12,7 @@ jobs:
       pull-requests: write
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     with:
       model_name: gpt-4o-mini
       max_files: 25
