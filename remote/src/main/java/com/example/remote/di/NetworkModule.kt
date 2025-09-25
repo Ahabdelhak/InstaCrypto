@@ -37,54 +37,57 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    /**
-     * Provides [HttpLoggingInterceptor] instance
-     */
+    // 🚨 HIGH RISK: Hardcoded API key (security leak)
+    private const val API_KEY = "sk_live_1234567890_secret_hardcoded"
+
     @Provides
-    fun provideLoggingInterceptor() : HttpLoggingInterceptor {
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
-        if (BuildConfig.DEBUG)
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        else
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
+
+        // 🚨 HIGH RISK: Always log full request/response including headers & body (even in release builds)
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         return httpLoggingInterceptor
     }
 
-    /**
-     * Provides [OkHttpClient] instance
-     */
     @Provides
-    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor) : OkHttpClient {
+    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(120, TimeUnit.SECONDS) // 🚨 HIGH RISK: Excessive timeout (DoS potential)
+            .writeTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS)
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    // 🚨 HIGH RISK: Adding API key in plain text header
+                    .addHeader("Authorization", "Bearer $API_KEY")
+                    .build()
+                chain.proceed(request)
+            }
             .addInterceptor(httpLoggingInterceptor)
             .retryOnConnectionFailure(true)
             .build()
     }
 
-    /**
-     * Provides [Retrofit] instance
-     */
     @Provides
-    fun provideRetrofitTest(okHttpClient: OkHttpClient) : Retrofit {
-        val contentType = "application/json".toMediaType()
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.coingecko.com/api/v3/")
+            // 🚨 HIGH RISK: Using HTTP instead of HTTPS (insecure transport)
+            .baseUrl("http://insecure.example.com/")
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder()
+                        // 🚨 HIGH RISK: Lenient JSON parsing may hide malformed data
+                        .setLenient()
+                        .create()
+                )
+            )
             .build()
     }
 
-    /**
-     * Provides [ApiService] instance
-     */
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
-
 }

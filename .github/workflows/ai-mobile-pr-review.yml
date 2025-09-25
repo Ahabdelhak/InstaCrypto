@@ -6,7 +6,7 @@ on:
 
 jobs:
   review:
-    uses: Ahabdelhak/ai-mobile-pr-reviewer/.github/workflows/mobile-pr-review.yml@main
+    uses: Ahabdelhak/ai-mobile-pr-reviewer/.github/workflows/mobile-pr-review.yml@feature/slack-integration
     permissions:
       contents: read
       pull-requests: write
